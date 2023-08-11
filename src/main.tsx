@@ -4,11 +4,16 @@ import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { UserWithUseSuspenceQuery } from './components/UserWithUseSuspenceQuery';
+import { UserWithUseBackgroundQuery } from './components/UserWithUseBackgroundQuery';
 
 const router = createBrowserRouter([
   {
     path: 'userWithUseSuspenceQuery',
     Component: UserWithUseSuspenceQuery,
+  },
+  {
+    path: 'userWithUseBackgroundQuery',
+    Component: UserWithUseBackgroundQuery,
   },
 ]);
 
