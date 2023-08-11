@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { SuspenseUseQuery } from './SuspenseUseQuery.tsx';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { UserWithUseSuspenceQuery } from './UserWithUseSuspenceQuery';
 
 const router = createBrowserRouter([
   {
-    path: 'user',
-    Component: SuspenseUseQuery,
+    path: 'userWithUseSuspenceQuery',
+    Component: UserWithUseSuspenceQuery,
   },
 ]);
 

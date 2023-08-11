@@ -21,7 +21,7 @@ const FetchTodosQuery = graphql(/* GraphQL */ `
   }
 `);
 
-export const SuspenseUseQuery: React.FC = () => {
+export const UserWithUseSuspenceQuery: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <User />
