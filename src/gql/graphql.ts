@@ -29,13 +29,12 @@ export type MutationCreateTodoArgs = {
 
 
 export type MutationUpdateTodoArgs = {
-  id: Scalars['ID']['input'];
   input: UpdateTodo;
 };
 
 export type NewTodo = {
   text: Scalars['String']['input'];
-  userId: Scalars['String']['input'];
+  userId: Scalars['ID']['input'];
 };
 
 export type Query = {
@@ -63,6 +62,7 @@ export type Todo = {
 
 export type UpdateTodo = {
   done?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['ID']['input'];
   text?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -87,6 +87,20 @@ export type FetchTodosQueryQueryVariables = Exact<{
 
 export type FetchTodosQueryQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string, text: string, done: boolean }> };
 
+export type FetchUserQueryForSuspenceQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type FetchUserQueryForSuspenceQuery = { __typename?: 'Query', user?: { __typename?: 'User', id: string, name: string } | null };
+
+export type FetchTodosQueryForSuspenceQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FetchTodosQueryForSuspenceQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string, text: string, done: boolean }> };
+
 
 export const FetchUserQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FetchUserQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<FetchUserQueryQuery, FetchUserQueryQueryVariables>;
 export const FetchTodosQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FetchTodosQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todos"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"userId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"done"}}]}}]}}]} as unknown as DocumentNode<FetchTodosQueryQuery, FetchTodosQueryQueryVariables>;
+export const FetchUserQueryForSuspenceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FetchUserQueryForSuspence"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<FetchUserQueryForSuspenceQuery, FetchUserQueryForSuspenceQueryVariables>;
+export const FetchTodosQueryForSuspenceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FetchTodosQueryForSuspence"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"done"}}]}}]}}]} as unknown as DocumentNode<FetchTodosQueryForSuspenceQuery, FetchTodosQueryForSuspenceQueryVariables>;

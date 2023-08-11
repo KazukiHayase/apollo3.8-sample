@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
-import { graphql } from './gql/gql';
+import { graphql } from '../gql/gql';
 import { useSuspenseQuery } from '@apollo/client';
 
-const FetchUserQuery = graphql(/* GraphQL */ `
-  query FetchUserQuery($id: ID!) {
+const FetchUserQueryForSuspence = graphql(/* GraphQL */ `
+  query FetchUserQueryForSuspence($id: ID!) {
     user(id: $id) {
       id
       name
@@ -11,9 +11,9 @@ const FetchUserQuery = graphql(/* GraphQL */ `
   }
 `);
 
-const FetchTodosQuery = graphql(/* GraphQL */ `
-  query FetchTodosQuery($userId: ID!) {
-    todos(userId: $userId) {
+const FetchTodosQueryForSuspence = graphql(/* GraphQL */ `
+  query FetchTodosQueryForSuspence {
+    todos {
       id
       text
       done
@@ -30,7 +30,9 @@ export const UserWithUseSuspenceQuery: React.FC = () => {
 };
 
 const User: React.FC = () => {
-  const { data } = useSuspenseQuery(FetchUserQuery, { variables: { id: '1' } });
+  const { data } = useSuspenseQuery(FetchUserQueryForSuspence, {
+    variables: { id: '1' },
+  });
   const user = data.user;
 
   if (!user) return <>Not found</>;
@@ -39,16 +41,14 @@ const User: React.FC = () => {
       <h1>User</h1>
       <h2>name: {user.name}</h2>
       <Suspense fallback={<div>Loading...</div>}>
-        <Todos userId={user.id} />
+        <Todos />
       </Suspense>
     </div>
   );
 };
 
-const Todos: React.FC<{ userId: string }> = ({ userId }) => {
-  const { data } = useSuspenseQuery(FetchTodosQuery, {
-    variables: { userId: userId },
-  });
+const Todos: React.FC = () => {
+  const { data } = useSuspenseQuery(FetchTodosQueryForSuspence);
   const todos = data.todos;
 
   return (

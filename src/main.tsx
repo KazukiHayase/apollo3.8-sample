@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { UserWithUseSuspenceQuery } from './UserWithUseSuspenceQuery';
+import { UserWithUseSuspenceQuery } from './components/UserWithUseSuspenceQuery';
 
 const router = createBrowserRouter([
   {
