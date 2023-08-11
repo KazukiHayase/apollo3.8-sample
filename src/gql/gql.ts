@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query FetchUserQuery($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n": types.FetchUserQueryDocument,
+    "\n  query FetchTodosQuery($userId: ID!) {\n    todos(userId: $userId) {\n      id\n      text\n      done\n    }\n  }\n": types.FetchTodosQueryDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query FetchUserQuery($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query FetchUserQuery($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query FetchTodosQuery($userId: ID!) {\n    todos(userId: $userId) {\n      id\n      text\n      done\n    }\n  }\n"): (typeof documents)["\n  query FetchTodosQuery($userId: ID!) {\n    todos(userId: $userId) {\n      id\n      text\n      done\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
