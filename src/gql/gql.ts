@@ -18,6 +18,8 @@ const documents = {
     "\n  query FetchUserQueryForUseFragment($id: ID!) {\n    user(id: $id) {\n      id\n      name\n      todos {\n        id\n        ...TodoFragmentForUseFragment\n      }\n    }\n  }\n": types.FetchUserQueryForUseFragmentDocument,
     "\n  mutation ToggleDoneMutation($id: ID!, $done: Boolean!) {\n    updateTodo(input: { id: $id, done: $done }) {\n      id\n      done\n    }\n  }\n": types.ToggleDoneMutationDocument,
     "\n  fragment TodoFragmentForUseFragment on Todo {\n    id\n    text\n    done\n  }\n": types.TodoFragmentForUseFragmentFragmentDoc,
+    "\n  query FetchUserQueryForUseFragmentNonreactive($id: ID!) {\n    user(id: $id) {\n      id\n      name\n      todos {\n        id\n        ...TodoFragmentForUseFragmentNonreactive @nonreactive\n      }\n    }\n  }\n": types.FetchUserQueryForUseFragmentNonreactiveDocument,
+    "\n  fragment TodoFragmentForUseFragmentNonreactive on Todo {\n    id\n    text\n    done\n  }\n": types.TodoFragmentForUseFragmentNonreactiveFragmentDoc,
     "\n  query FetchUserQueryForSuspence($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n": types.FetchUserQueryForSuspenceDocument,
     "\n  query FetchTodosQueryForSuspence {\n    todos {\n      id\n      text\n      done\n    }\n  }\n": types.FetchTodosQueryForSuspenceDocument,
 };
@@ -56,6 +58,14 @@ export function graphql(source: "\n  mutation ToggleDoneMutation($id: ID!, $done
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  fragment TodoFragmentForUseFragment on Todo {\n    id\n    text\n    done\n  }\n"): (typeof documents)["\n  fragment TodoFragmentForUseFragment on Todo {\n    id\n    text\n    done\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query FetchUserQueryForUseFragmentNonreactive($id: ID!) {\n    user(id: $id) {\n      id\n      name\n      todos {\n        id\n        ...TodoFragmentForUseFragmentNonreactive @nonreactive\n      }\n    }\n  }\n"): (typeof documents)["\n  query FetchUserQueryForUseFragmentNonreactive($id: ID!) {\n    user(id: $id) {\n      id\n      name\n      todos {\n        id\n        ...TodoFragmentForUseFragmentNonreactive @nonreactive\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment TodoFragmentForUseFragmentNonreactive on Todo {\n    id\n    text\n    done\n  }\n"): (typeof documents)["\n  fragment TodoFragmentForUseFragmentNonreactive on Todo {\n    id\n    text\n    done\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
