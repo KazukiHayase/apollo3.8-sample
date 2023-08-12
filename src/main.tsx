@@ -5,6 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { UserWithUseSuspenceQuery } from './components/UserWithUseSuspenceQuery';
 import { UserWithUseBackgroundQuery } from './components/UserWithUseBackgroundQuery';
+import { UserWithUseFragment } from './components/UserWithUseFragment';
+import { UserWithUseFragmentNonreactive } from './components/UserWithUseFragmentNonreactive';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
   {
     path: 'userWithUseBackgroundQuery',
     Component: UserWithUseBackgroundQuery,
+  },
+  {
+    path: 'userWithUseFragment',
+    Component: UserWithUseFragment,
+  },
+  {
+    path: 'userWithUseFragmentNonreactive',
+    Component: UserWithUseFragmentNonreactive,
   },
 ]);
 
