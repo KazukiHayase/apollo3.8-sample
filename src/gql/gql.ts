@@ -20,8 +20,8 @@ const documents = {
     "\n  fragment TodoFragmentForUseFragment on Todo {\n    id\n    text\n    done\n  }\n": types.TodoFragmentForUseFragmentFragmentDoc,
     "\n  query FetchUserQueryForUseFragmentNonreactive($id: ID!) {\n    user(id: $id) {\n      id\n      name\n      todos {\n        id\n        ...TodoFragmentForUseFragmentNonreactive @nonreactive\n      }\n    }\n  }\n": types.FetchUserQueryForUseFragmentNonreactiveDocument,
     "\n  fragment TodoFragmentForUseFragmentNonreactive on Todo {\n    id\n    text\n    done\n  }\n": types.TodoFragmentForUseFragmentNonreactiveFragmentDoc,
-    "\n  query FetchUserQueryForSuspence($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n": types.FetchUserQueryForSuspenceDocument,
-    "\n  query FetchTodosQueryForSuspence {\n    todos {\n      id\n      text\n      done\n    }\n  }\n": types.FetchTodosQueryForSuspenceDocument,
+    "\n  query FetchUserQueryForSuspense($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n": types.FetchUserQueryForSuspenseDocument,
+    "\n  query FetchTodosQueryForSuspense {\n    todos {\n      id\n      text\n      done\n    }\n  }\n": types.FetchTodosQueryForSuspenseDocument,
 };
 
 /**
@@ -69,11 +69,11 @@ export function graphql(source: "\n  fragment TodoFragmentForUseFragmentNonreact
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query FetchUserQueryForSuspence($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query FetchUserQueryForSuspence($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"];
+export function graphql(source: "\n  query FetchUserQueryForSuspense($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query FetchUserQueryForSuspense($id: ID!) {\n    user(id: $id) {\n      id\n      name\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query FetchTodosQueryForSuspence {\n    todos {\n      id\n      text\n      done\n    }\n  }\n"): (typeof documents)["\n  query FetchTodosQueryForSuspence {\n    todos {\n      id\n      text\n      done\n    }\n  }\n"];
+export function graphql(source: "\n  query FetchTodosQueryForSuspense {\n    todos {\n      id\n      text\n      done\n    }\n  }\n"): (typeof documents)["\n  query FetchTodosQueryForSuspense {\n    todos {\n      id\n      text\n      done\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

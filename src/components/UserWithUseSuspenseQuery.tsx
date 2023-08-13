@@ -2,8 +2,8 @@ import { Suspense } from 'react';
 import { graphql } from '../gql/gql';
 import { useSuspenseQuery } from '@apollo/client';
 
-const FetchUserQueryForSuspence = graphql(/* GraphQL */ `
-  query FetchUserQueryForSuspence($id: ID!) {
+const FetchUserQueryForSuspense = graphql(/* GraphQL */ `
+  query FetchUserQueryForSuspense($id: ID!) {
     user(id: $id) {
       id
       name
@@ -11,8 +11,8 @@ const FetchUserQueryForSuspence = graphql(/* GraphQL */ `
   }
 `);
 
-const FetchTodosQueryForSuspence = graphql(/* GraphQL */ `
-  query FetchTodosQueryForSuspence {
+const FetchTodosQueryForSuspense = graphql(/* GraphQL */ `
+  query FetchTodosQueryForSuspense {
     todos {
       id
       text
@@ -21,7 +21,7 @@ const FetchTodosQueryForSuspence = graphql(/* GraphQL */ `
   }
 `);
 
-export const UserWithUseSuspenceQuery: React.FC = () => {
+export const UserWithUseSuspenseQuery: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <User />
@@ -30,7 +30,7 @@ export const UserWithUseSuspenceQuery: React.FC = () => {
 };
 
 const User: React.FC = () => {
-  const { data } = useSuspenseQuery(FetchUserQueryForSuspence, {
+  const { data } = useSuspenseQuery(FetchUserQueryForSuspense, {
     variables: { id: '1' },
   });
   const user = data.user;
@@ -48,7 +48,7 @@ const User: React.FC = () => {
 };
 
 const Todos: React.FC = () => {
-  const { data } = useSuspenseQuery(FetchTodosQueryForSuspence);
+  const { data } = useSuspenseQuery(FetchTodosQueryForSuspense);
   const todos = data.todos;
 
   return (

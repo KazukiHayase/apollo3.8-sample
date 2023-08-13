@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { UserWithUseSuspenceQuery } from './components/UserWithUseSuspenceQuery';
+import { UserWithUseSuspenseQuery } from './components/UserWithUseSuspenseQuery';
 import { UserWithUseBackgroundQuery } from './components/UserWithUseBackgroundQuery';
 import { UserWithUseFragment } from './components/UserWithUseFragment';
 import { UserWithUseFragmentNonreactive } from './components/UserWithUseFragmentNonreactive';
 
 const router = createBrowserRouter([
   {
-    path: 'userWithUseSuspenceQuery',
-    Component: UserWithUseSuspenceQuery,
+    path: 'userWithUseSuspenseQuery',
+    Component: UserWithUseSuspenseQuery,
   },
   {
     path: 'userWithUseBackgroundQuery',
